@@ -1,4 +1,5 @@
 # Input e Output que serão exportados
+from TC.constants import ALL_SERVICES
 from util import data_para_timestamp
 
 input_data = {
@@ -25,7 +26,7 @@ input_data = {
     "listaProfisional": [
         {
             "idProfissional": 24,
-            "listaServico": [12, 13, 15],
+            "listaServico": ALL_SERVICES,
             "inicioTrabalho": data_para_timestamp("25/10/2023 08:00"),
             "fimTrabalho": data_para_timestamp("25/10/2023 22:00"),
         },
