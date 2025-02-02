@@ -1,0 +1,73 @@
+Lista de Possibilidades para Casos de Teste de Agendamento
+
+Disponibilidade de Profissionais
+
+TC1: Nenhum profissional disponível no horário solicitado.
+
+TC2:Apenas um profissional disponível para o serviço no horário solicitado.
+
+TC3:Múltiplos profissionais disponíveis para o serviço no horário solicitado.
+
+TC4:Profissionais disponíveis, mas sem o serviço solicitado.
+
+TC5:Profissional disponível, mas já está reservado para outro serviço no mesmo horário.
+
+TC6:Profissional disponível, mas o horário solicitado excede seu horário de trabalho.
+
+TC7:Disponibilidade de Salas (Rooms)
+
+TC8:Nenhuma sala disponível para o serviço no horário solicitado.
+
+TC9:Apenas uma sala disponível e compatível com o serviço.
+
+TC10:Múltiplas salas disponíveis e compatíveis com o serviço.
+
+TC11:Sala disponível, mas já ocupada por outro agendamento no mesmo horário.
+
+TC12:Sala disponível, mas não compatível com o serviço solicitado.
+
+Disponibilidade da Loja (Shop)
+
+TC13:A loja está fechada no horário solicitado.
+
+TC14:A loja está aberta no horário solicitado.
+
+TC15:O horário solicitado coincide com o horário de fechamento da loja.
+
+Duração e Conflitos de Agendamentos
+
+TC16:Duração do serviço excede o horário disponível do profissional.
+
+TC17:Duração do serviço excede o horário disponível da sala.
+
+TC18:Duração do serviço ultrapassa o horário de funcionamento da loja.
+
+TC19:O horário solicitado entra em conflito com um agendamento pré-existente.
+
+TC20:O horário solicitado não entra em conflito com nenhum agendamento existente.
+
+Composição de Serviços e Compatibilidade
+
+TC21:O serviço solicitado não existe na lista de serviços disponíveis.
+
+TC22:O serviço solicitado está presente, mas nenhum profissional está habilitado para executá-lo.
+
+TC23:O serviço solicitado está presente, mas nenhuma sala pode hospedá-lo.
+
+TC24:O serviço solicitado requer múltiplos profissionais, mas apenas um está disponível.
+
+TC25:O serviço solicitado pode ser dividido entre múltiplos profissionais disponíveis.
+
+Casos Limite e Exceções
+
+TC26:Tentativa de agendamento em um horário fora do intervalo permitido.
+
+TC27:Tentativa de agendamento com duração inválida (zero ou negativa).
+
+TC28:Tentativa de agendamento em um dia diferente do esperado.
+
+TC29:Todos os recursos (profissionais, salas e loja) estão disponíveis, permitindo o agendamento.
+
+TC30:Todos os recursos (profissionais, salas e loja) estão indisponíveis, impedindo o agendamento.
+
+TC31:Conflito entre múltiplos serviços reservados na mesma sala, mas com horários ligeiramente diferentes. gere um caso de teste conforme esse modelo para cada caso de teste
