@@ -3,8 +3,15 @@ import torch
 import torch.nn as nn
 import torch.optim as optim
 from torch.utils.data import DataLoader, TensorDataset
+from TC.TC0 import input_data as TC0_input, output_data as TC0_output
+from TC.TC0B import input_data as TC0B_input, output_data as TC0B_output
 from TC.TC1 import input_data as TC1_input, output_data as TC1_output
 from TC.TC2 import input_data as TC2_input, output_data as TC2_output
+from TC.TC3 import input_data as TC3_input, output_data as TC3_output
+from TC.TC4 import input_data as TC4_input, output_data as TC4_output
+from TC.TC5 import input_data as TC5_input, output_data as TC5_output
+from TC.TC6 import input_data as TC6_input, output_data as TC6_output
+from TC.TC7 import input_data as TC7_input, output_data as TC7_output
 from TC.constants import ALL_ROOMS
 
 # Parâmetros de padding (ajustados conforme solicitado)
@@ -45,8 +52,10 @@ def transform_input(input_data):
             features.extend([0] * 4)  # idRoom + 3 serviços
     print(f"Total de features após ListaRoom: {len(features)}")
     
-    # ListaProfissional (agora com mais profissionais)
-    print(f"ListaProfissional tamanho original: {len(input_data['listaProfisional'])}")
+    # listaProfisional (agora com mais profissionais)
+    print(f"guilherme")
+    print(input_data)
+    print(f"listaProfisional tamanho original: {len(input_data['listaProfisional'])}")
     for i in range(MAX_PROFISSIONAIS):
         if i < len(input_data["listaProfisional"]):
             profissional = input_data["listaProfisional"][i]
@@ -59,7 +68,7 @@ def transform_input(input_data):
             ])
         else:
             features.extend([0] * 6)  # id + 3 serviços + 2 horários
-    print(f"Total de features após ListaProfissional: {len(features)}")
+    print(f"Total de features após listaProfisional: {len(features)}")
     
     # ListaShop (agora com mais lojas)
     print(f"ListaShop tamanho original: {len(input_data['listaShop'])}")
@@ -87,11 +96,33 @@ def transform_input(input_data):
 
 
 # Lista de input_datas e output_datas
-input_datas = [TC1_input, TC2_input]
-output_datas = [TC1_output, TC2_output]
+input_datas = [
+    TC1_input,
+    TC2_input,
+    TC3_input,
+    TC4_input,
+    TC5_input,
+    TC6_input,
+    TC7_input,
+]
+output_datas = [
+    TC1_output,
+    TC2_output,
+    TC3_output,
+    TC4_output,
+    TC5_output,
+    TC6_output,
+    TC7_output,
+]
 
 # Transforma todos os input_datas em vetores de características
-X_list = [transform_input(data) for data in input_datas]
+X_list = []
+i =0
+for data in input_datas:  # Use enumerate para obter índice e valor
+    print(f'***Transformando o input {i}')
+    transformed_data = transform_input(data)
+    X_list.append(transformed_data)
+    i =i+1
 
 # Verifica o tamanho de cada vetor
 for i, x in enumerate(X_list):
@@ -142,7 +173,7 @@ optimizer = optim.Adam(model.parameters(), lr=0.001)
 dataset = TensorDataset(torch.tensor(X), torch.tensor(y).unsqueeze(1))
 dataloader = DataLoader(dataset, batch_size=2, shuffle=True)
 
-for epoch in range(10):
+for epoch in range(100):
     for inputs, labels in dataloader:
         optimizer.zero_grad()
         outputs = model(inputs)
